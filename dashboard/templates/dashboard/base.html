@@ -15,7 +15,7 @@
     <!-- Custom CSS-->
     <link rel="stylesheet" href="{% static 'dashboard/main.css' %}">
 
-    <title>Awwwards</title>
+    <title>The Hood</title>
 </head>
 <body>
 
@@ -23,7 +23,7 @@
      
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
             <div class="container">
-                <a href="#" class="navbar-brand">The Hood</a>
+                <a href="{% url 'home' %}" class="navbar-brand">The Hood</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -32,7 +32,7 @@
                     <ul class="navbar-nav ms-auto">
                         {% if user.is_authenticated %}
                             <li class="nav-item">
-                                <a href="" class="nav-link">New Project</a>
+                                <a href="{% url 'create-hood' %}" class="nav-link">Add Hood</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{% url 'profile' %}" class="nav-link">Profile</a>
