@@ -7,7 +7,7 @@ from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 # Create your views here.
 def register(request):
     if request.method == 'POST':
-        form = UserRegisterForm()
+        form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, f'Your account has been created! Login.')
