@@ -1,23 +1,26 @@
 {% extends 'dashboard/base.html' %}
 
 {% block content %}
-    {% for hood in hoods %}
-    <a href="{% url 'new-post' hood.id %}" class="nav-link">Add Post</a>
+    {% for post in posts %}
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6 mb-4">
                     <div class="card">
                         <div class="card-body">
-                            <a href="{% url 'hood-detail' hood.id %}">
-                                <h5 class="card-title">{{ hood.hood_name }}</h5>
-                            </a>
+                            <div class="d-flex d-row gap-3">
+                                <h5 class="card-title">{{ post.title }}</h5>
+                                <small>{{ post.user }}</small>
+                                <a href="{% url 'hood-detail' post.hood.id %}">
+                                    <small> for {{ post.hood }}</small>
+                                </a>
+                            </div>
                             <p class="card-text">
-                                {{ hood.hood_location }}
+                                {{ post.post }}
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
     {% endfor %}
 {% endblock %}
