@@ -6,15 +6,11 @@ from .forms import HoodForm, PostForm
 
 # Create your views here.
 def home(request):
-    # if request.method == 'POST':
-    #     title = request.POST['title']
-    #     post = request.POST['post']
-
-    #     posts = Post(title=title,post=post)
-    #     posts.save()
-    hoods = Neighborhood.objects.all()
+    # hoods = Neighborhood.objects.all()
+    posts = Post.objects.all().order_by('-date_posted')
     context ={
-        'hoods':hoods,
+        'posts':posts,
+        # 'hoods':hoods,
     }
     return render(request,'dashboard/home.html',context)
 
@@ -71,3 +67,9 @@ def hood_detail(request,id):
         'contacts':contacts
         }
     return render(request,'dashboard/hood_detail.html', context)
+
+
+@login_required
+def hood_posts(request,id):
+    posts = Post.objects.filter(hood=id).order_by('-date_posted')
+    return render(request, 'dashboard/hood_posts.html', {'posts':posts})
