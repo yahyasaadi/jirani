@@ -5,6 +5,7 @@ from .models import Post, Neighborhood, Business, Contact
 from .forms import HoodForm, PostForm
 
 # Create your views here.
+@login_required
 def home(request):
     # hoods = Neighborhood.objects.all()
     posts = Post.objects.all().order_by('-date_posted')
@@ -69,6 +70,7 @@ def hood_detail(request,id):
     return render(request,'dashboard/hood_detail.html', context)
 
 
+# Individual Hood Posts
 @login_required
 def hood_posts(request,id):
     posts = Post.objects.filter(hood=id).order_by('-date_posted')
