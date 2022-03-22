@@ -7,13 +7,22 @@ from .forms import HoodForm, PostForm
 # Create your views here.
 @login_required
 def home(request):
-    # hoods = Neighborhood.objects.all()
+    hood = Neighborhood.objects.filter(user=request.user)
     posts = Post.objects.all().order_by('-date_posted')
     context ={
         'posts':posts,
-        # 'hoods':hoods,
+        'hood':hood,
     }
     return render(request,'dashboard/home.html',context)
+
+@login_required
+def hoods(request):
+    hoods = Neighborhood.objects.all()
+    context ={
+        'hoods':hoods,
+    }
+    return render(request,'dashboard/hoods.html',context)
+
 
 
 # Creating a hood

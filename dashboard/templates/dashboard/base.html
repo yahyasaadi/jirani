@@ -31,6 +31,9 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a href="{% url 'hoods' %}" class="nav-link">View Hoods</a>
+                        </li>
                             <li class="nav-item">
                                 <a href="{% url 'create-hood' %}" class="nav-link">Add Hood</a>
                             </li>

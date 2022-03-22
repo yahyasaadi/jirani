@@ -1,23 +1,18 @@
 {% extends 'dashboard/base.html' %}
 
 {% block content %}
-    <h4>Please add your neighborhood first.</h4>
-    {% for post in posts %}
+    <h4>List of neighborhoods.</h4>
+    {% for hood in hoods %}
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6 mb-4">
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex d-row gap-3">
-                                <h5 class="card-title">{{ post.title }}</h5>
-                                <small>{{ post.user }}</small>
-                                <a href="{% url 'hood-detail' post.hood.id %}">
-                                    <small> for {{ post.hood }}</small>
+                                <a href="{% url 'hood-detail' hood.id %}">
+                                    <h5 class="card-title">{{ hood.hood_name }}</h5>
                                 </a>
                             </div>
-                            <p class="card-text">
-                                {{ post.post }}
-                            </p>
                         </div>
                     </div>
                 </div>

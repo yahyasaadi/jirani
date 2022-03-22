@@ -4,6 +4,7 @@ from . import views
 urlpatterns = [
     path('home/', views.home, name='home'),
     path('hood/new/', views.add_hood, name='create-hood'),
+    path('hoods/', views.hoods, name='hoods'),
     path('hood/<int:id>/', views.hood_detail, name='hood-detail'),
     path('post/new/<int:hood_id>/', views.post, name='new-post'),
     path('posts/<int:id>/', views.hood_posts, name='hood-posts'),
